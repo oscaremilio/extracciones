@@ -1,5 +1,7 @@
+// Solciita el módulo Puppeteer
 const puppeteer = require("puppeteer-core");
 
+// Función que inicia el navegador y devuelve una instancia de él
 async function startBrowser() {
     let browser;
     try {
