@@ -1,3 +1,5 @@
+// Archivo que contiene la secuencia de comandos que inicia el navegador
+
 // Solciita el módulo Puppeteer
 const puppeteer = require("puppeteer-core");
 
