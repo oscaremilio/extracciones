@@ -9,6 +9,6 @@
   "author": "Oscar Benítez",
   "license": "ISC",
   "dependencies": {
-    "puppeteer-core": "^23.0.2"
+    "puppeteer": "^23.1.0"
   }
 }
