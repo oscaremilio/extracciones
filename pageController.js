@@ -4,7 +4,7 @@
 const pageScraper = require("./pageScraper");
 
 /* 
-La instancia del navegador sepasa la función scrapeAll().
+La instancia del navegador se pasa a la función scrapeAll().
 Esta función, a su vez, pasa la instancia como argumento a pageScrapper.scraper(),
  que la utiliza para extraer datos de las páginas
 
