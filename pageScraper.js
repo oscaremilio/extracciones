@@ -63,7 +63,7 @@ const scraperObject = {
             for(link in urls) {
                 let currentPageData = await pagePromise(urls[link]);
                 scrapedData.push(currentPageData);
-                console.log(currentPageData);
+                // console.log(currentPageData);
             }
 
             /* Cuando todos los datos de la página se han extraido,
