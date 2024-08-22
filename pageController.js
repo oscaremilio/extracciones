@@ -14,8 +14,10 @@ async function scrapeAll(browserInstance) {
     try {
         browser = await browserInstance;
         let scrapedData = {};
-        // Llama al scraper para la categoría de libros que se desea scrapear
-        scrapedData["Travel"] = await pageScraper.scraper(browser, "Travel"); 
+        // Llama al scraper para varios conjuntos diferentes de categorías de libros que se desea scrapear
+        scrapedData["Travel"] = await pageScraper.scraper(browser, "Travel");
+        scrapedData['HistoricalFiction'] = await pageScraper.scraper(browser, 'Historical Fiction');
+        scrapedData['Mystery'] = await pageScraper.scraper(browser, 'Mystery');
         await browser.close();
         console.log(scrapedData);
     } catch(err) {
