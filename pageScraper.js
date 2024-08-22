@@ -5,12 +5,22 @@ const scraperObject = {
     // propiedad url con la página web de la que se extrae los datos
     url: "http://books.toscrape.com",
     // método que contiene el código que realiza la extracción en sí
-    async scraper(browser) {
+    async scraper(browser, category) {
         // método newPage() que crea una instancia de página nueva en el navegador
         let page = await browser.newPage();
         console.log(`Navegando hacia el sitio web${this.url}...`);
         // utiliza el método page.goto() para navegar a la página web en la propiedad url
         await page.goto(this.url);
+        // Selecciona la categoría del libro que se va a mostrar
+		let selectedCategory = await page.$$eval('.side_categories > ul > li > ul > li > a', (links, _category) => {
+
+			// Busca el elemento que tiene el texto que coincide
+			links = links.map(a => a.textContent.replace(/(\r\n\t|\n|\r|\t|^\s|\s$|\B\s|\s\B)/gm, "") === _category ? a : null);
+			let link = links.filter(tx => tx !== null)[0];
+			return link.href;
+		}, category);
+		// Navega hasta la categoría seleccionada
+		await page.goto(selectedCategory);
         let scrapedData = [];
         // Espera al DOM requerido para renderizarse
         async function scrapeCurrentPage() {

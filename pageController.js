@@ -13,7 +13,11 @@ async function scrapeAll(browserInstance) {
     let browser;
     try {
         browser = await browserInstance;
-        await pageScraper.scraper(browser);
+        let scrapedData = {};
+        // Llama al scraper para la categoría de libros que se desea scrapear
+        scrapedData["Travel"] = await pageScraper.scraper(browser, "Travel"); 
+        await browser.close();
+        console.log(scrapedData);
     } catch(err) {
         console.log("No se pudo resolver la instancia del navegador => ", err);
     }
